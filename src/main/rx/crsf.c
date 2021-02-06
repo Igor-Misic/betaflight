@@ -175,6 +175,8 @@ static void handleCrsfLinkStatisticsFrame(const crsfLinkStatistics_t* statsPtr, 
     }
 #endif
 
+    setTxPwr(stats.uplink_TX_Power);
+
     switch (debugMode) {
     case DEBUG_CRSF_LINK_STATISTICS_UPLINK:
         DEBUG_SET(DEBUG_CRSF_LINK_STATISTICS_UPLINK, 0, stats.uplink_RSSI_1);

@@ -1173,7 +1173,9 @@ static void osdElementRssi(osdElementParms_t *element)
         osdRssi = 99;
     }
 
-    tfp_sprintf(element->buff, "%c%2d", SYM_RSSI, osdRssi);
+    uint8_t txPwr = getTxPwr();
+
+    tfp_sprintf(element->buff, "%c%2d%3d", SYM_RSSI, osdRssi, txPwr);
 }
 
 #ifdef USE_RTC_TIME

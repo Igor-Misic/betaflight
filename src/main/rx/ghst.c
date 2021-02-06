@@ -247,11 +247,13 @@ static bool ghstProcessFrame(const rxRuntimeState_t *rxRuntimeState)
 
                     DEBUG_SET(DEBUG_GHST, DEBUG_GHST_RX_RSSI, -rssiFrame->rssi);
                     DEBUG_SET(DEBUG_GHST, DEBUG_GHST_RX_LQ, rssiFrame->lq);
+                    DEBUG_SET(DEBUG_GHST, DEBUG_GHST_RX_LQ, rssiFrame->txPwrdBm);
 
                     if (rssiSource == RSSI_SOURCE_RX_PROTOCOL) {
                         // rssi sent sign-inverted
                         const uint16_t rssiPercentScaled = scaleRange(-rssiFrame->rssi, GHST_RSSI_DBM_MIN, 0, GHST_RSSI_DBM_MAX, RSSI_MAX_VALUE);
                         setRssi(rssiPercentScaled, RSSI_SOURCE_RX_PROTOCOL);
+                        setTxPwr(rssiFrame->txPwrdBm);
                     }
 
 #ifdef USE_RX_RSSI_DBM

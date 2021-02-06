@@ -203,6 +203,9 @@ int16_t getRssiDbm(void);
 void setRssiDbm(int16_t newRssiDbm, rssiSource_e source);
 void setRssiDbmDirect(int16_t newRssiDbm, rssiSource_e source);
 
+uint8_t getTxPwr(void);
+void setTxPwr(uint8_t newTxPwr);
+
 void rxSetRfMode(uint8_t rfModeValue);
 uint8_t rxGetRfMode(void);
 

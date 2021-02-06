@@ -77,6 +77,8 @@ static uint16_t rssi = 0;                  // range: [0;1023]
 static int16_t rssiDbm = CRSF_RSSI_MIN;    // range: [-130,20]
 static timeUs_t lastMspRssiUpdateUs = 0;
 
+static uint8_t txPwr = 0;
+
 static pt1Filter_t frameErrFilter;
 
 #ifdef USE_RX_LINK_QUALITY_INFO
@@ -757,6 +759,11 @@ void setRssiMsp(uint8_t newMspRssi)
     }
 }
 
+void setTxPwr(uint8_t newTxPwr)
+{
+    txPwr = newTxPwr;
+}
+
 static void updateRSSIPWM(void)
 {
     // Read value of AUX channel as rssi
@@ -824,6 +831,11 @@ uint8_t getRssiPercent(void)
 int16_t getRssiDbm(void)
 {
     return rssiDbm;
+}
+
+uint8_t getTxPwr(void)
+{
+    return txPwr;
 }
 
 #define RSSI_SAMPLE_COUNT_DBM 16
